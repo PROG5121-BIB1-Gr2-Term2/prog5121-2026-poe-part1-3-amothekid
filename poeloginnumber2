@@ -1,0 +1,107 @@
+
+package com.mycompany.workingclasspoe1;
+
+
+public class Poelogin {
+     private String lastname;
+    private String firstname;
+    private String  username;
+      private String  password;
+      private String  Phonenumber;
+    
+    public Poelogin(String  Phonenumber,String  password,String  username,String lastname,String firstname){
+        this.username = username;
+        this.password = password;
+        this.Phonenumber = Phonenumber;
+        this.lastname = lastname;
+        this.firstname = firstname;
+    }
+  
+ 
+   public static  boolean checkerUserName (String username ){
+     
+     
+      boolean hasUnderscore = false;
+        boolean hasOtherChar = false;
+
+        // Constraint username length must be equals to 5 and has an underscore
+        if (username.length() <= 5) {
+            for (int i = 0; i < username.length(); i++) {
+                char c = username.charAt(i);
+                if (c == '_') {
+                    hasUnderscore = true;
+                } else {
+                    hasOtherChar = true;
+                }
+         if (hasUnderscore && hasOtherChar) {
+                    return true;
+                }
+            }
+        }
+        return false;
+     
+    }
+   public static boolean checkPasswordComplexity (String password ){
+       
+           boolean hasUppercase = false;
+    boolean hasDigit = false;
+    boolean hasSpecialChar = false;
+    int minlength = 8;
+
+    // i goes through each character and makes sure they have an unppercace or a digit
+    for (int i = 0; i < password.length(); i++) {
+        char c = password.charAt(i);
+
+        if (Character.isUpperCase(c)) {
+            hasUppercase = true;
+        } else if (Character.isDigit(c)) {
+            hasDigit = true;
+        } else if (!Character.isLetterOrDigit(c)) {
+            hasSpecialChar = true;
+        }
+    }
+
+    // Final condition check
+    return password.length() >= minlength && hasUppercase && hasDigit && hasSpecialChar;
+}
+   
+   
+   public static boolean checkCellPhoneNumber( String Phonenumber ) {
+     
+    boolean  Phonenumberchecker = Phonenumber.startsWith("+27")&&Phonenumber.length()==12 && Phonenumber.substring(1).matches("\\d+");
+       
+    if (Phonenumberchecker){
+        
+        String localnumbervariable = "0" + Phonenumber.substring(3);
+        System.out.println("Cell phone number successfully added." + localnumbervariable);
+    }else {
+         System.out.println("Cell phone number incorrectly formatted or does not contain internatinal code ");
+    }
+       
+   return Phonenumberchecker;
+   }
+        public  boolean loginUser(String placeUser,String placePass){
+     return placeUser.equals(username)&&placePass.equals(password);
+ }
+ 
+ public  String registerUser(String  PlaceinUser , String placeInPass ){
+     
+      if ( PlaceinUser.equals(username)&&placeInPass.equals(password)){
+     return "Welcome<"+ firstname + ">"+","+"<"+ lastname + ">"+"it is great to see you.";
+ }else {
+         return "Username or password incorrect,please try again.";
+         }
+     
+ }
+   public String returnLoginStatus(String inputUser, String inputPass) {
+       if (loginUser(inputUser, inputPass)){
+          return "A successful login ";
+       }else{
+           return "A failed login";
+       }
+   }
+   
+ 
+ 
+     }
+

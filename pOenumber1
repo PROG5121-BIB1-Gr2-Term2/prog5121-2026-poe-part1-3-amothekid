@@ -1,0 +1,77 @@
+
+package com.mycompany.workingclasspoe1;
+import java.util.Scanner;
+
+
+public class Workingclasspoe1 {
+   // main class 
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String  Newpassword = "";
+        String newusername = "";
+       String Newphnonenumber = "";
+        String firstname = "";
+       String lastname = "";
+          
+      
+         System.out.println("please enter your first name");
+       firstname = scan.next();
+       
+       System.out.println("please enter your last name");
+       lastname = scan.next();
+        
+       
+        // Username validation loop
+         
+        do {
+            System.out.println("Create your username: ");
+            newusername = scan.next();
+            if (!Poelogin.checkerUserName(newusername)) {
+                System.out.println("Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.");
+            }
+        } while (!Poelogin.checkerUserName(newusername));
+        System.out.println("Username successfully captured.");
+
+        // Password validation loop
+       
+        do {
+            System.out.println("Create your password: ");
+            Newpassword = scan.next();
+            if (!Poelogin.checkPasswordComplexity(Newpassword)) {
+                System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
+            }
+        } while (!Poelogin.checkPasswordComplexity(Newpassword));
+        System.out.println("Password successfully captured.");
+
+        // phone number check
+
+        do {
+            System.out.println("Create your phone number for (e.g : +27xxxxxxxxxxxx) ");
+            Newphnonenumber = scan.next();
+            if (!Poelogin.checkCellPhoneNumber(Newphnonenumber)) {
+                System.out.println("Cell phone number incorectly formatted or does not contain internatinal code.");
+            }
+        } while (!Poelogin.checkCellPhoneNumber(Newphnonenumber));
+        System.out.println("Cell phone number successfully added");
+                
+                
+                 
+         Poelogin login = new  Poelogin( Newphnonenumber , Newpassword,  newusername, lastname, firstname) ;
+      do{    
+        System.out.println("please log in your username");
+        String inputuser = scan.next();
+        
+        System.out.println("please enter in your password to enter your account");
+        String inputpass = scan.next();
+        
+        
+        System.out.println(login.registerUser(inputuser,inputpass));
+        System.out.println(login.returnLoginStatus(inputuser,inputpass));
+      }while(!login.loginUser(newusername,  Newpassword));
+     
+    
+    }
+}
+
+
+    

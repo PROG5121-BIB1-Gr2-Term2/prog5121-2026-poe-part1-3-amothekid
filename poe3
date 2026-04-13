@@ -1,0 +1,117 @@
+
+package com.mycompany.workingclasspoe1;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+public class PoeloginTest {
+    
+    public PoeloginTest() {
+    }
+    
+    @BeforeAll
+    public static void setUpClass() {
+    }
+    
+    @AfterAll
+    public static void tearDownClass() {
+    }
+    
+    @BeforeEach
+    public void setUp() {
+    }
+    
+    @AfterEach
+    public void tearDown() {
+    }
+
+    /**
+     * Test of checkerUserName method, of class Poelogin.
+     */
+    @Test
+    public void testCheckerUserName() {
+        System.out.println("checkerUserName");
+        String username = "kyl_1";
+        boolean expResult = true;
+        boolean result = Poelogin.checkerUserName(username);
+        assertEquals(expResult, result);
+        
+    }
+
+    /**
+     * Test of checkPasswordComplexity method, of class Poelogin.
+     */
+    @Test
+    public void testCheckPasswordComplexity() {
+        System.out.println("checkPasswordComplexity");
+        String password = "Ch&&sec@ke99!";
+        boolean expResult = true;
+        boolean result = Poelogin.checkPasswordComplexity(password);
+        assertEquals(expResult, result);
+        
+    }
+
+    /**
+     * Test of checkCellPhoneNumber method, of class Poelogin.
+     */
+    @Test
+    public void testCheckCellPhoneNumber() {
+        System.out.println("checkCellPhoneNumber");
+        String Phonenumber = "+27123456789";
+        boolean expResult = true;
+        boolean result = Poelogin.checkCellPhoneNumber(Phonenumber);
+        assertEquals(expResult, result);
+      
+    }
+
+    /**
+     * Test of loginUser method, of class Poelogin.
+     */
+    @Test
+    public void testLoginUser() {
+        System.out.println("loginUser");
+        String placeUser = "kyl_1";
+        String placePass = "Ch&&sec@ke99!";
+        Poelogin instance = null;
+        boolean expResult = true;
+        boolean result = instance.loginUser(placeUser, placePass);
+        assertEquals(expResult, result);
+       
+    }
+
+    /**
+     * Test of registerUser method, of class Poelogin.
+     */
+    @Test
+    public void testRegisterUser() {
+        System.out.println("registerUser");
+        String PlaceinUser = "amo";
+        String placeInPass = "mahlatji";
+        Poelogin instance = null;
+        String expResult = "";
+        String result = instance.registerUser(PlaceinUser, placeInPass);
+        assertEquals(expResult, result);
+        
+    }
+
+    /**
+     * Test of returnLoginStatus method, of class Poelogin.
+     */
+    @Test
+    public void testReturnLoginStatus() {
+        System.out.println("returnLoginStatus");
+        String inputUser = "kyl_1";
+        String inputPass = "Ch&&sec@ke99!";
+        Poelogin instance = new  Poelogin( "+27123456789" , "Ch&&sec@ke99!", "kyl_1" , "Mahlatji", "Amo") ;
+        String expResult = "A successful login ";
+        String result = instance.returnLoginStatus(inputUser, inputPass);
+        assertEquals(expResult, result);
+       
+    }
+    
+}
